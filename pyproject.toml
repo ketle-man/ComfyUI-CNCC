@@ -6,7 +6,7 @@ license = { file = "LICENSE" }
 dependencies = []
 
 [project.urls]
-Repository = "https://github.com/"
+Repository = "https://github.com/ketle-man/ComfyUI-CNCC"
 
 [tool.comfy]
 PublisherId = ""
