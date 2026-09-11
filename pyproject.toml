@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-cncc"
+description = "ComfyUI ControlNet Control Center - save comfyui_controlnet_aux preprocessors as reusable presets and handle them from a single node"
+version = "0.1.0"
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/"
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-CNCC"
+Icon = ""

@@ -1,0 +1,414 @@
+/* ===== ノード上のウィジェット ===== */
+
+.cncc-button-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.cncc-node-btn {
+    width: 100%;
+    background: #2a2a2a;
+    color: #ddd;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.cncc-node-btn:hover {
+    background: #383838;
+    border-color: #666;
+}
+
+.cncc-dropzone {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a1a1a;
+    border: 1px dashed #555;
+    border-radius: 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.cncc-dropzone-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.cncc-dropzone-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.cncc-dropzone-view-label {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 10px;
+    color: #ccc;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1px 5px;
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cncc-dropzone-over {
+    border-color: #3fae4a;
+    background: #202820;
+}
+
+.cncc-dropzone-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* ===== モーダル共通 ===== */
+
+.cncc-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.75);
+    outline: none;
+}
+
+.cncc-modal {
+    display: flex;
+    flex-direction: column;
+    width: 1040px;
+    max-width: 95vw;
+    height: 720px;
+    max-height: 92vh;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    color: #ddd;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+.cncc-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-bottom: 1px solid #444;
+    flex: 0 0 auto;
+}
+
+.cncc-tab-row {
+    display: flex;
+    gap: 6px;
+}
+
+.cncc-tab-btn {
+    background: #1f1f1f;
+    color: #ccc;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.cncc-tab-btn.active {
+    background: #3fae4a;
+    color: #fff;
+    border-color: #3fae4a;
+}
+
+.cncc-modal-close {
+    background: transparent;
+    color: #ccc;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.cncc-modal-close:hover {
+    color: #fff;
+}
+
+.cncc-modal-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.cncc-col {
+    box-sizing: border-box;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.cncc-col-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #eee;
+}
+
+/* ===== タブA: サンプル作成 ===== */
+
+.cncc-create-tab {
+    width: 100%;
+}
+
+.cncc-col-list {
+    width: 200px;
+    flex: 0 0 auto;
+    border-right: 1px solid #3a3a3a;
+}
+
+.cncc-cn-category {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.cncc-cn-item {
+    padding: 5px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cncc-cn-item:hover {
+    background: #383838;
+}
+
+.cncc-cn-item.active {
+    background: #2f6fdb;
+    color: #fff;
+}
+
+.cncc-cn-item-unavailable {
+    color: #666;
+    cursor: not-allowed;
+}
+
+.cncc-cn-item-unavailable:hover {
+    background: none;
+}
+
+.cncc-col-center {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cncc-modal-dropzone,
+.cncc-modal-resultzone {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #1a1a1a;
+    border: 1px dashed #555;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+.cncc-modal-dropzone img,
+.cncc-modal-resultzone img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.cncc-result-label {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-size: 11px;
+    color: #999;
+}
+
+.cncc-col-right {
+    width: 260px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #3a3a3a;
+}
+
+.cncc-run-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.cncc-action-btn {
+    background: #3fae4a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.cncc-action-btn:hover {
+    filter: brightness(1.1);
+}
+
+.cncc-action-btn-danger {
+    background: #7a2b2b;
+}
+
+.cncc-param-form {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.cncc-param-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+.cncc-param-row label {
+    flex: 0 0 auto;
+    min-width: 90px;
+}
+
+.cncc-param-input {
+    flex: 1 1 auto;
+    max-width: 120px;
+    background: #1f1f1f;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 3px;
+    padding: 3px 6px;
+}
+
+.cncc-save-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.cncc-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.cncc-name-input {
+    flex: 1 1 auto;
+    background: #1f1f1f;
+    color: #eee;
+    border: 1px solid #444;
+    border-radius: 3px;
+    padding: 5px 8px;
+}
+
+/* ===== タブB: サンプル選択 ===== */
+
+.cncc-select-tab {
+    width: 100%;
+}
+
+.cncc-col-sample {
+    width: 160px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #3a3a3a;
+}
+
+.cncc-sample-dropzone {
+    flex: 1 1 auto;
+}
+
+.cncc-col-grid {
+    flex: 1 1 auto;
+}
+
+.cncc-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.cncc-preset-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1f1f1f;
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+    padding: 6px;
+    cursor: pointer;
+    aspect-ratio: 1 / 1.15;
+}
+
+.cncc-preset-tile:hover {
+    border-color: #666;
+}
+
+.cncc-preset-tile.active {
+    border-color: #3fae4a;
+    box-shadow: 0 0 0 1px #3fae4a;
+}
+
+.cncc-preset-tile img {
+    width: 100%;
+    flex: 1 1 auto;
+    object-fit: cover;
+    border-radius: 3px;
+    background: #111;
+}
+
+.cncc-preset-tile-label {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #ccc;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.cncc-settings-view {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}

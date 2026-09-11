@@ -1,0 +1,31 @@
+{
+  "CNCCNode": {
+    "display_name": "CNCC ControlNet",
+    "inputs": {
+      "cn_name": { "name": "Preset" },
+      "image": { "name": "Image" }
+    },
+    "outputs": {
+      "0": { "name": "Original Image" },
+      "1": { "name": "ControlNet Image" }
+    }
+  },
+  "CNCCControlNetApplyNode": {
+    "display_name": "CNCC Apply ControlNet",
+    "inputs": {
+      "cn_name": { "name": "Preset" },
+      "positive": { "name": "Positive" },
+      "negative": { "name": "Negative" },
+      "control_net_name": { "name": "ControlNet Model" },
+      "strength": { "name": "Strength" },
+      "start_percent": { "name": "Start %" },
+      "end_percent": { "name": "End %" },
+      "image": { "name": "Image" }
+    },
+    "outputs": {
+      "0": { "name": "Positive" },
+      "1": { "name": "Negative" },
+      "2": { "name": "ControlNet Image" }
+    }
+  }
+}

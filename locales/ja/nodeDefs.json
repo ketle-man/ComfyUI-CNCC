@@ -1,0 +1,31 @@
+{
+  "CNCCNode": {
+    "display_name": "CNCC ControlNet",
+    "inputs": {
+      "cn_name": { "name": "プリセット" },
+      "image": { "name": "画像" }
+    },
+    "outputs": {
+      "0": { "name": "元画像" },
+      "1": { "name": "ControlNet画像" }
+    }
+  },
+  "CNCCControlNetApplyNode": {
+    "display_name": "CNCC Apply ControlNet",
+    "inputs": {
+      "cn_name": { "name": "プリセット" },
+      "positive": { "name": "ポジティブ" },
+      "negative": { "name": "ネガティブ" },
+      "control_net_name": { "name": "ControlNetモデル" },
+      "strength": { "name": "強度" },
+      "start_percent": { "name": "開始%" },
+      "end_percent": { "name": "終了%" },
+      "image": { "name": "画像" }
+    },
+    "outputs": {
+      "0": { "name": "ポジティブ" },
+      "1": { "name": "ネガティブ" },
+      "2": { "name": "ControlNet画像" }
+    }
+  }
+}

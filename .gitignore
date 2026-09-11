@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.pyc
+
+# User-generated preset library (JSON + thumbnails).
+# Created automatically at runtime by py/preset_store.py; not shipped with the repo.
+/presets/

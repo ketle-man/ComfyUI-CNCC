@@ -1,0 +1,31 @@
+{
+  "CNCCNode": {
+    "display_name": "CNCC ControlNet",
+    "inputs": {
+      "cn_name": { "name": "预设" },
+      "image": { "name": "图片" }
+    },
+    "outputs": {
+      "0": { "name": "原图" },
+      "1": { "name": "ControlNet图像" }
+    }
+  },
+  "CNCCControlNetApplyNode": {
+    "display_name": "CNCC Apply ControlNet",
+    "inputs": {
+      "cn_name": { "name": "预设" },
+      "positive": { "name": "正向条件" },
+      "negative": { "name": "负向条件" },
+      "control_net_name": { "name": "ControlNet模型" },
+      "strength": { "name": "强度" },
+      "start_percent": { "name": "起始%" },
+      "end_percent": { "name": "结束%" },
+      "image": { "name": "图片" }
+    },
+    "outputs": {
+      "0": { "name": "正向条件" },
+      "1": { "name": "负向条件" },
+      "2": { "name": "ControlNet图像" }
+    }
+  }
+}
