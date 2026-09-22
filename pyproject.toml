@@ -9,6 +9,6 @@ dependencies = []
 Repository = "https://github.com/ketle-man/ComfyUI-CNCC"
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "statsu"
 DisplayName = "ComfyUI-CNCC"
-Icon = ""
+Icon = "https://raw.githubusercontent.com/ketle-man/ComfyUI-CNCC/master/docs/thumb.png"
