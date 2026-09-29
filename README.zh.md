@@ -7,6 +7,8 @@
 一个ComfyUI自定义节点，可将 `comfyui_controlnet_aux` 的预处理器保存为可复用的“预设”，
 从而用单个节点即可完成ControlNet预处理直至应用的整个流程。
 
+![CNCC](docs/workflow.png)
+
 ## 前提条件
 
 - 需要已安装 [comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux)。
@@ -26,6 +28,12 @@
 - 从缩略图列表中选择、调用、删除已保存的预设
 - 通过拖放新图片创建样例，并可对所有已保存预设执行批量预览
 - 支持日语 / 英语 / 简体中文界面（自动跟随ComfyUI的语言设置）
+
+## 截图
+
+| CN设置 | 预设选择器 |
+| --- | --- |
+| ![CN Settings](docs/cn_settings.png) | ![Preset Selector](docs/preset_selector.png) |
 
 ## 节点
 
@@ -47,6 +55,12 @@
   节点自身的图片拖放区域（仅在 `image` 未连接时使用）
 - **输出**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（预处理结果预览图）
 - 支持多个ControlNet串联应用时的链式处理（叠加应用时保留前一级的应用结果，而非覆盖）
+
+## 示例工作流
+
+[`workflow/ccnc_sample_workflow.json`](workflow/ccnc_sample_workflow.json) 是一个最小示例，
+在标准SDXL文生图流程中接入了 `CNCCControlNetApplyNode`。其中的提示词和已上传的参考图片
+均已清空——加载后，请自行拖入ControlNet参考图片，并填写你自己的提示词、Checkpoint和预设后再运行。
 
 ## 故障排查
 

@@ -7,6 +7,8 @@ English | [日本語](README.ja.md) | [中文](README.zh.md)
 A ComfyUI custom node that saves `comfyui_controlnet_aux` preprocessors as reusable "presets", so
 ControlNet preprocessing — and applying the result — can be handled from a single node.
 
+![CNCC](docs/workflow.png)
+
 ## Prerequisites
 
 - [comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux) must be installed.
@@ -26,6 +28,12 @@ No additional dependencies are required.
 - Select, load, and delete saved presets from a thumbnail gallery
 - Create new samples by dragging and dropping an image, including bulk-previewing it against every saved preset
 - UI available in Japanese / English / Simplified Chinese (follows ComfyUI's language setting automatically)
+
+## Screenshots
+
+| CN Settings | Preset Selector |
+| --- | --- |
+| ![CN Settings](docs/cn_settings.png) | ![Preset Selector](docs/preset_selector.png) |
 
 ## Nodes
 
@@ -47,6 +55,13 @@ running the preprocessor and loading/applying the ControlNet model into a single
   the node's own image-drop area (used only when `image` is not connected)
 - **Outputs**: `positive`, `negative` (CONDITIONING), `controlnet_image` (a preview of the preprocessed image)
 - Supports chaining multiple ControlNets in series (each new application keeps the previous one instead of overwriting it)
+
+## Sample workflow
+
+[`workflow/ccnc_sample_workflow.json`](workflow/ccnc_sample_workflow.json) is a minimal example wiring
+`CNCCControlNetApplyNode` into a standard SDXL txt2img graph. Prompts and the uploaded reference image
+have been cleared out — after loading it, drop in your own ControlNet reference image and fill in your
+own prompts, checkpoint, and preset before running.
 
 ## Troubleshooting
 

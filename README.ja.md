@@ -7,6 +7,8 @@
 `comfyui_controlnet_aux` のプリプロセッサーを「プリセット」として保存し、1つのノードで
 ControlNet前処理〜ControlNet適用までを簡単に扱えるようにするComfyUIカスタムノードです。
 
+![CNCC](docs/workflow.png)
+
 ## 前提
 
 - [comfyui_controlnet_aux](https://github.com/Fannovel16/comfyui_controlnet_aux) がインストール済みであること。
@@ -26,6 +28,12 @@ ControlNet前処理〜ControlNet適用までを簡単に扱えるようにする
 - 保存済みプリセットのサムネイル一覧からの選択・呼び出し・削除
 - 新規画像のドラッグ&ドロップによるサンプル作成、およびプリセット一覧への一括プレビュー適用
 - 日本語 / 英語 / 中国語（簡体字）のUI表示（ComfyUIの言語設定に自動追従）
+
+## スクリーンショット
+
+| CN設定 | プリセットセレクター |
+| --- | --- |
+| ![CN Settings](docs/cn_settings.png) | ![Preset Selector](docs/preset_selector.png) |
 
 ## ノード
 
@@ -47,6 +55,13 @@ ComfyUIネイティブの `Apply ControlNet`（`ControlNetApplyAdvanced`）の�
   ノード上の画像ドロップ領域（`image`未接続時のみ使用）
 - **出力**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（プリプロセス結果のプレビュー用）
 - 複数のControlNetを直列に繋いだ場合のchaining処理（前段のControlNet適用結果を維持したまま重ねる）に対応
+
+## サンプルワークフロー
+
+[`workflow/ccnc_sample_workflow.json`](workflow/ccnc_sample_workflow.json) は、標準的なSDXL
+txt2imgグラフに `CNCCControlNetApplyNode` を組み込んだ最小構成のサンプルです。プロンプトと
+アップロード済みの参照画像は消去してあります。読み込んだ後、ControlNet用の参照画像を
+ご自身でドロップし、プロンプト・チェックポイント・プリセットを設定してから実行してください。
 
 ## トラブルシューティング
 
