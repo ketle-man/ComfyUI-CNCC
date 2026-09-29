@@ -7,7 +7,8 @@
     },
     "outputs": {
       "0": { "name": "元画像" },
-      "1": { "name": "ControlNet画像" }
+      "1": { "name": "ControlNet画像" },
+      "2": { "name": "ポーズキーポイント" }
     }
   },
   "CNCCControlNetApplyNode": {
@@ -25,7 +26,8 @@
     "outputs": {
       "0": { "name": "ポジティブ" },
       "1": { "name": "ネガティブ" },
-      "2": { "name": "ControlNet画像" }
+      "2": { "name": "ControlNet画像" },
+      "3": { "name": "ポーズキーポイント" }
     }
   }
 }

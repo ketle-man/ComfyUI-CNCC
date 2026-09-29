@@ -42,7 +42,8 @@
 仅运行已保存预设的预处理器，不进行ControlNet应用。
 
 - **输入**: `cn_name`（已保存的预设名称）、`image`（IMAGE，可选）、节点自身的图片拖放区域（仅在 `image` 未连接时使用）
-- **输出**: `original_image`（原图）、`controlnet_image`（预处理结果图）
+- **输出**: `original_image`（原图）、`controlnet_image`（预处理结果图）、`pose_keypoint`
+  （POSE_KEYPOINT数据，仅当预设使用DWPose/OpenPose等姿势类预处理器时才有值，否则为`None`）
 
 ### CNCC Apply ControlNet (`CNCCControlNetApplyNode`)
 
@@ -53,7 +54,8 @@
   `control_net_name`（从 `models/controlnet/` 中选择ControlNet模型名称的下拉框）、
   `strength`、`start_percent`、`end_percent`、`image`（IMAGE，可选）、
   节点自身的图片拖放区域（仅在 `image` 未连接时使用）
-- **输出**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（预处理结果预览图）
+- **输出**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（预处理结果预览图）、
+  `pose_keypoint`（POSE_KEYPOINT数据，仅当预设使用DWPose/OpenPose等姿势类预处理器时才有值，否则为`None`）
 - 支持多个ControlNet串联应用时的链式处理（叠加应用时保留前一级的应用结果，而非覆盖）
 
 ## 示例工作流

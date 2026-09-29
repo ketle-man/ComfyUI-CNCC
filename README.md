@@ -42,7 +42,8 @@ No additional dependencies are required.
 Runs a saved preset's preprocessor only. Does not apply any ControlNet.
 
 - **Inputs**: `cn_name` (a saved preset name), `image` (IMAGE, optional), the node's own image-drop area (used only when `image` is not connected)
-- **Outputs**: `original_image`, `controlnet_image` (the preprocessor's output)
+- **Outputs**: `original_image`, `controlnet_image` (the preprocessor's output), `pose_keypoint`
+  (POSE_KEYPOINT data, only populated when the preset uses a pose preprocessor such as DWPose/OpenPose — `None` otherwise)
 
 ### CNCC Apply ControlNet (`CNCCControlNetApplyNode`)
 
@@ -53,7 +54,8 @@ running the preprocessor and loading/applying the ControlNet model into a single
   `control_net_name` (a combo of ControlNet model names from `models/controlnet/`),
   `strength`, `start_percent`, `end_percent`, `image` (IMAGE, optional),
   the node's own image-drop area (used only when `image` is not connected)
-- **Outputs**: `positive`, `negative` (CONDITIONING), `controlnet_image` (a preview of the preprocessed image)
+- **Outputs**: `positive`, `negative` (CONDITIONING), `controlnet_image` (a preview of the preprocessed image),
+  `pose_keypoint` (POSE_KEYPOINT data, only populated when the preset uses a pose preprocessor such as DWPose/OpenPose — `None` otherwise)
 - Supports chaining multiple ControlNets in series (each new application keeps the previous one instead of overwriting it)
 
 ## Sample workflow

@@ -34,8 +34,8 @@ class CNCCNode:
 
     CATEGORY = "CNCC"
     FUNCTION = "execute"
-    RETURN_TYPES = ("IMAGE", "IMAGE")
-    RETURN_NAMES = ("original_image", "controlnet_image")
+    RETURN_TYPES = ("IMAGE", "IMAGE", "POSE_KEYPOINT")
+    RETURN_NAMES = ("original_image", "controlnet_image", "pose_keypoint")
 
     @classmethod
     def INPUT_TYPES(cls):
@@ -74,8 +74,8 @@ class CNCCNode:
         if preset is None:
             raise ValueError(f"Preset '{cn_name}' not found. Please recreate it in CNCC Settings.")
 
-        controlnet_image = preprocessor_registry.run_preset(preset, src)
-        return (src, controlnet_image)
+        controlnet_image, pose_keypoint = preprocessor_registry.run_preset(preset, src)
+        return (src, controlnet_image, pose_keypoint)
 
 
 class CNCCControlNetApplyNode:
@@ -83,8 +83,8 @@ class CNCCControlNetApplyNode:
 
     CATEGORY = "CNCC"
     FUNCTION = "execute"
-    RETURN_TYPES = ("CONDITIONING", "CONDITIONING", "IMAGE")
-    RETURN_NAMES = ("positive", "negative", "controlnet_image")
+    RETURN_TYPES = ("CONDITIONING", "CONDITIONING", "IMAGE", "POSE_KEYPOINT")
+    RETURN_NAMES = ("positive", "negative", "controlnet_image", "pose_keypoint")
     SEARCH_ALIASES = ["controlnet", "apply controlnet", "use controlnet", "control net"]
 
     @classmethod
@@ -155,10 +155,10 @@ class CNCCControlNetApplyNode:
                 "contain a valid ControlNet model."
             )
 
-        controlnet_image = preprocessor_registry.run_preset(preset, src)
+        controlnet_image, pose_keypoint = preprocessor_registry.run_preset(preset, src)
 
         if strength == 0:
-            return (positive, negative, controlnet_image)
+            return (positive, negative, controlnet_image, pose_keypoint)
 
         control_hint = controlnet_image.movedim(-1, 1)
         new_positive = _apply_control_net_to_conditioning(
@@ -168,4 +168,4 @@ class CNCCControlNetApplyNode:
             negative, control_net, control_hint, strength, start_percent, end_percent
         )
 
-        return (new_positive, new_negative, controlnet_image)
+        return (new_positive, new_negative, controlnet_image, pose_keypoint)

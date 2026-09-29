@@ -42,7 +42,8 @@ ControlNet前処理〜ControlNet適用までを簡単に扱えるようにする
 プリセット化されたプリプロセッサーを実行するだけのノード。ControlNetの適用は行いません。
 
 - **入力**: `cn_name`（保存済みプリセット名）、`image`（IMAGE、任意）、ノード上の画像ドロップ領域（`image`未接続時のみ使用）
-- **出力**: `original_image`（元画像）、`controlnet_image`（ControlNet出力画像）
+- **出力**: `original_image`（元画像）、`controlnet_image`（ControlNet出力画像）、`pose_keypoint`
+  （POSE_KEYPOINTデータ。プリセットがDWPose/OpenPoseなどのポーズ系プリプロセッサーの場合のみ値が入り、それ以外は`None`）
 
 ### CNCC Apply ControlNet (`CNCCControlNetApplyNode`)
 
@@ -53,7 +54,8 @@ ComfyUIネイティブの `Apply ControlNet`（`ControlNetApplyAdvanced`）の�
   `control_net_name`（ControlNetモデル名のコンボ、`models/controlnet/`から選択）、
   `strength`、`start_percent`、`end_percent`、`image`（IMAGE、任意）、
   ノード上の画像ドロップ領域（`image`未接続時のみ使用）
-- **出力**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（プリプロセス結果のプレビュー用）
+- **出力**: `positive`、`negative`（CONDITIONING）、`controlnet_image`（プリプロセス結果のプレビュー用）、
+  `pose_keypoint`（POSE_KEYPOINTデータ。プリセットがDWPose/OpenPoseなどのポーズ系プリプロセッサーの場合のみ値が入り、それ以外は`None`）
 - 複数のControlNetを直列に繋いだ場合のchaining処理（前段のControlNet適用結果を維持したまま重ねる）に対応
 
 ## サンプルワークフロー

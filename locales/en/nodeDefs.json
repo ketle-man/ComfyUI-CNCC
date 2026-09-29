@@ -7,7 +7,8 @@
     },
     "outputs": {
       "0": { "name": "Original Image" },
-      "1": { "name": "ControlNet Image" }
+      "1": { "name": "ControlNet Image" },
+      "2": { "name": "Pose Keypoint" }
     }
   },
   "CNCCControlNetApplyNode": {
@@ -25,7 +26,8 @@
     "outputs": {
       "0": { "name": "Positive" },
       "1": { "name": "Negative" },
-      "2": { "name": "ControlNet Image" }
+      "2": { "name": "ControlNet Image" },
+      "3": { "name": "Pose Keypoint" }
     }
   }
 }

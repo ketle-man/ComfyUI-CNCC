@@ -7,7 +7,8 @@
     },
     "outputs": {
       "0": { "name": "原图" },
-      "1": { "name": "ControlNet图像" }
+      "1": { "name": "ControlNet图像" },
+      "2": { "name": "姿势关键点" }
     }
   },
   "CNCCControlNetApplyNode": {
@@ -25,7 +26,8 @@
     "outputs": {
       "0": { "name": "正向条件" },
       "1": { "name": "负向条件" },
-      "2": { "name": "ControlNet图像" }
+      "2": { "name": "ControlNet图像" },
+      "3": { "name": "姿势关键点" }
     }
   }
 }

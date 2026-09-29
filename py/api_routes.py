@@ -155,7 +155,7 @@ def setup_routes():
                 else:
                     return web.json_response({"error": "No image specified"}, status=400)
 
-                result_tensor = preprocessor_registry.run_preprocessor(cn_type, params, image_tensor)
+                result_tensor, _pose_keypoint = preprocessor_registry.run_preprocessor(cn_type, params, image_tensor)
                 preview_img = thumbnail.resize_for_preview(result_tensor, max_side=512)
                 b64 = thumbnail.pil_to_base64(preview_img, fmt="PNG")
                 return web.json_response({"image_base64": b64})

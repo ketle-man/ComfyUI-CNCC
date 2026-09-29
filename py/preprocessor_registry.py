@@ -63,6 +63,11 @@ def _with_prompt_context(func, prompt_id=None, node_id="CNCC"):
 
 
 def run_preprocessor(node_type: str, params: dict, image_tensor, prompt_id=None, node_id="CNCC"):
+    """プリプロセッサーを実行し、(image, pose_keypoint) を返す。
+
+    pose_keypoint は、そのプリプロセッサー（DWPose/OpenPose系など）が
+    POSE_KEYPOINT を出力する場合のみ値が入り、それ以外は None になる。
+    """
     cls = get_preprocessor_class(node_type)
     instance = cls()
     func_name = getattr(cls, "FUNCTION", "execute")
@@ -76,8 +81,11 @@ def run_preprocessor(node_type: str, params: dict, image_tensor, prompt_id=None,
 
     result = _with_prompt_context(_call, prompt_id=prompt_id, node_id=node_id)
     return_types = cls.RETURN_TYPES
-    image_index = return_types.index("IMAGE")
-    return result[image_index]
+    image = result[return_types.index("IMAGE")]
+    pose_keypoint = None
+    if "POSE_KEYPOINT" in return_types:
+        pose_keypoint = result[return_types.index("POSE_KEYPOINT")]
+    return image, pose_keypoint
 
 
 def run_preset(preset: dict, image_tensor, prompt_id=None, node_id="CNCC"):
